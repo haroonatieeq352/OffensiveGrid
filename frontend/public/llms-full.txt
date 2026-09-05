@@ -79,7 +79,7 @@ To allow the repository to remain publicly accessible for international client i
 
 - **Current Title:** Penetration Tester | VAPT & Application Security
 - **Current Organization:** CSZone Pvt. Limited
-- **Location:** Bahawalpur, Punjab, Pakistan
+- **Location:** Punjab, Pakistan
 - **Official Domain:** https://cszone.pk
 - **GitHub:** https://github.com/haroonatieeq352
 - **OffensiveGrid Repo:** https://github.com/haroonatieeq352/OffensiveGrid

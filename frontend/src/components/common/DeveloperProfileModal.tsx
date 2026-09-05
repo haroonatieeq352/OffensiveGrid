@@ -78,7 +78,7 @@ export const DeveloperProfileModal: React.FC<DeveloperProfileModalProps> = ({ is
 
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-400 pt-1">
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-rose-400" /> Bahawalpur, Punjab, Pakistan
+                  <MapPin className="w-3.5 h-3.5 text-rose-400" /> Punjab, Pakistan
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
