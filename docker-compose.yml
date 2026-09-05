@@ -33,6 +33,8 @@ services:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:8080}
+      - OFFENSIVEGRID_FOUNDER_DEV=${OFFENSIVEGRID_FOUNDER_DEV:-FALSE}
+      - OFFENSIVEGRID_LICENSE_KEY=${OFFENSIVEGRID_LICENSE_KEY:-}
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media

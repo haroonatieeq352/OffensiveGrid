@@ -49,6 +49,7 @@ cp .env.production.example .env
 3. **`CORS_ALLOWED_ORIGINS`**: Add the `https://` version of your domains.
 4. **`DB_PASSWORD`**: Set a strong database password.
 5. **SMTP / Email Credentials**: You **MUST** provide a valid email and App Password here. Without this, the OTP feature will fail in production. 
+6. **`OFFENSIVEGRID_FOUNDER_DEV`**: Set to `"TRUE"` for Haroon's official deployment. This grants lifetime Founder authorization so the zero-trust hardware gate never locks the server. (Alternatively, provide an issued `OFFENSIVEGRID_LICENSE_KEY`). 
 
 ### Step 3: Build and Spin Up Containers
 Run the following command in the root directory where `docker-compose.yml` is located:
