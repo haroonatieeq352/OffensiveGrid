@@ -22,7 +22,8 @@ backend/cleanup_*.py
 backend/recalc.py
 backend/test_serializer.py
 !backend/tests/
-!backend/tests/**
+!backend/tests/*.py
+backend/tests/__pycache__/
 
 # Environment Variables & Secrets (STRICT ZERO-LEAK)
 .env
