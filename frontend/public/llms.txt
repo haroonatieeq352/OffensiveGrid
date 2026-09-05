@@ -1,0 +1,95 @@
+# OffensiveGrid — Enterprise CTF & Cyber Range Platform
+
+> **Official Domain:** https://cszone.pk  
+> **Source Repository:** https://github.com/haroonatieeq352/OffensiveGrid  
+> **Founder & Lead Developer:** Haroon Atieeq ([@haroonatieeq352](https://github.com/haroonatieeq352))  
+> **Contact Email:** haroonatieeq6@gmail.com  
+> **Primary Keywords:** cyber security, Cyber Security, CYBER SECURITY, offensive security, Offensive Security, OFFENSIVE SECURITY, cybersecurity, Cybersecurity, ctf platform, CTF Platform, best ctf challenges, Best CTF Challenges, ethical hacking, Ethical Hacking, blackbox hacking, Blackbox Hacking, vapt training, cyber range
+
+---
+
+## 📌 OffensiveGrid Purpose
+OffensiveGrid is an authentic, enterprise-grade Cyber Warfare Simulation and Capture The Flag (CTF) training platform developed by **Haroon Atieeq**. Engineered for ethical hackers, penetration testers, defense trainees, academic institutions, and corporate security teams, OffensiveGrid bridges the gap between theoretical security and live, production-grade combat exercises.
+
+---
+
+## 💡 OffensiveGrid Importance
+Traditional cybersecurity education often relies on multiple-choice quizzes or unmonitored challenge sets vulnerable to brute-force flag guessing and credential leakage. OffensiveGrid introduces:
+1. **Live Isolated Exploitation Sandboxes:** Trainees interact with real HTTP servers, vulnerable API parameters, binary routines, and cryptographic ciphers.
+2. **Atomic Attempt Quota Engine:** Guarantees that flags cannot be brute-forced or fuzzed automatically.
+3. **Sub-Second Live Telemetry:** WebSockets broadcast scoreboard positions and combat achievements across tournament grids in real time.
+4. **Institutional Ready:** Turnkey deployment for university labs, cyber hackathons, and corporate red/blue team exercises.
+
+---
+
+## 🌍 Real-World Importance & Strategic Impact
+
+### 1. For Enterprises & Security Teams
+- **Adversary Emulation:** Realistic simulated breach drills and incident response testing within isolated sandboxes.
+- **Skill Auditing & Talent Recruitment:** Objective, data-backed evaluation of penetration testers and security engineers based on practical exploit metrics rather than paper certifications.
+- **DevSecOps Upskilling:** Hands-on demonstration of OWASP Top 10 vulnerabilities, header misconfigurations, and IDOR flaws.
+
+### 2. For Cybersecurity Career Aspirants & Startups
+- **Tactical Muscle Memory:** Practical experience executing web exploitation, reverse engineering, OSINT reconnaissance, and forensics.
+- **Verifiable Portfolio Metrics:** Public scoreboard rankings and precision solve rates that provide tangible proof of offensive skill for job applications and client engagements.
+
+### 3. For Universities & Academic Final Year Projects (FYP)
+- **Turnkey Cyber Range:** Ready-to-deploy cyber lab for computer science and cybersecurity departments.
+- **Automated Grading:** Eliminates manual assignment review with cryptographic flag verification.
+- **Capstone Project Model:** An award-winning reference architecture demonstrating full-stack engineering, real-time messaging, and zero-trust security.
+
+---
+
+## 🏗️ Professional System Architecture Design and Work Flow
+OffensiveGrid is engineered with a decoupled, asynchronous microservices-ready architecture:
+- **Frontend Layer:** React 18, TypeScript, Vite, Tailwind CSS, Lucide icons, glassmorphism dark-mode UI.
+- **API & Core Layer:** Django 5.0+, Django REST Framework (DRF), ASGI, Channels.
+- **Real-Time Telemetry:** WebSockets broadcasting live scoreboard updates and leaderboard shifts.
+- **Authentication & Security:** JWT with automatic rotation, Google Authenticator TOTP 2FA, RBAC permission matrix.
+- **Target Sandboxes:** Ephemeral Docker containers simulating vulnerable servers and network services.
+- **Workflow:** Trainee selects scenario -> reviews intelligence brief -> launches isolated attack target -> performs reconnaissance and exploitation -> extracts flag format `CTF{...}` -> submits via atomic validation endpoint -> points & leaderboard update instantaneously.
+
+---
+
+## ⚡ OffensiveGrid Scoring Engine & Rank Mechanics
+- **Base Points:** Awarded upon first correct flag capture (e.g., 50 PTS, 100 PTS, 250 PTS).
+- **Strict Attempt Quotas:** Scenarios enforce a hard attempt limit (e.g., 3 attempts). Reaching the quota locks the scenario.
+- **Zero-Duplicate Solves:** Once solved, scenarios cannot yield duplicate points.
+- **Timestamp Tie-Breaker:** Ties on leaderboard points are deterministically resolved by the trainee with the earliest last-solve timestamp.
+- **Admin Review:** Super Administrators can grant second chances (+1 attempt) via the audit panel without compromising scoring integrity.
+
+---
+
+## 🔒 OffensiveGrid Security Guardrails & Anti-Cheat
+- **Zero-Trust Backend:** Server-side `select_for_update` database row locks prevent race condition exploits.
+- **TOTP 2FA:** Mandatory two-factor authentication for administrative operations.
+- **Zero Flag Leakage:** Flags and hashes are never sent to the client browser prior to validation.
+- **Credential Redaction:** Strict Zero-Leak policy prevents sensitive tokens and keys from entering version control.
+
+---
+
+## 🔐 OffensiveGrid Hardware Authorization & Machine Activation Gate
+To protect proprietary intellectual property while keeping the code discoverable on GitHub:
+- **Deterministic HWID:** Derived from machine hardware (MAC, node, machine-id), format: `OG-XXXX-XXXX-XXXX`.
+- **HMAC-SHA256 Signed Activation Keys:** Only keys cryptographically signed by Haroon Atieeq will unlock the runtime.
+- **Execution Lockdown:** Unauthorized machines automatically halt with error:
+  `⛔ [OffensiveGrid Security Gate]: Unauthorized Machine! This instance is locked. You require an official authorization key from Haroon Atieeq to run OffensiveGrid. Hardware ID: OG-8492-F92A-K29 Contact: haroonatieeq6@gmail.com to request access.`
+
+---
+
+## 🔑 How to Request an Evaluation License Key
+1. Clone the repository (`git clone https://github.com/haroonatieeq352/OffensiveGrid.git`).
+2. Run the application to display your machine's unique **Hardware ID**.
+3. Email **Haroon Atieeq** at [haroonatieeq6@gmail.com](mailto:haroonatieeq6@gmail.com) with your Name, Organization/University, and Machine Hardware ID.
+4. Add your issued key to `backend/.env` as `OFFENSIVEGRID_LICENSE_KEY=OGLIC.<payload>.<sig>` or enter it into the browser activation modal.
+
+---
+
+## 👤 Developer Profile — Haroon Atieeq
+- **Full Name:** Haroon Atieeq (also credited as Haroon Atieeque)
+- **Role:** Founder, Lead Developer & Offensive Security Engineer
+- **Specializations:** Cyber Security, Ethical Hacking, VAPT, CTF Platform Architecture, Penetration Testing, Full-Stack Python/React Architecture.
+- **Official Domain:** https://cszone.pk
+- **GitHub Profile:** https://github.com/haroonatieeq352
+- **OffensiveGrid Repository:** https://github.com/haroonatieeq352/OffensiveGrid
+- **Contact:** haroonatieeq6@gmail.com

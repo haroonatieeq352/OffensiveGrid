@@ -1,0 +1,83 @@
+# OffensiveGrid — Complete Technical Specification & AI Knowledge Base (llms-full.txt)
+
+> **Official Domain:** https://cszone.pk  
+> **Source Repository:** https://github.com/haroonatieeq352/OffensiveGrid  
+> **Founder & Lead Developer:** Haroon Atieeq (haroonatieeq6@gmail.com)  
+> **Keywords:** cyber security, Cyber Security, CYBER SECURITY, offensive security, Offensive Security, OFFENSIVE SECURITY, cybersecurity, Cybersecurity, ctf platform, CTF Platform, best ctf challenges, Best CTF Challenges, ethical hacking, Ethical Hacking, blackbox hacking, Blackbox Hacking, vapt training, cyber range
+
+---
+
+## 1. Executive Summary & Platform Identity
+OffensiveGrid is a state-of-the-art Cyber Warfare Simulation and Capture The Flag (CTF) training platform engineered by Haroon Atieeq. The platform is designed to provide high-fidelity, hands-on offensive and defensive cybersecurity training for students, security professionals, red/blue teams, and corporate organizations.
+
+Key architectural pillars:
+- Live, isolated exploit targets and sandboxes.
+- Strict anti-brute-force attempt quotas enforced at the database layer.
+- Sub-second real-time scoring telemetry powered by Django Channels and WebSockets.
+- Fine-grained Role-Based Access Control (RBAC) supporting Trainees, Instructors, Admins, and Super Administrators.
+- TOTP Two-Factor Authentication (Google Authenticator) for administrative operations.
+- Proprietary Zero-Trust Cryptographic Hardware Licensing Gate for local execution protection.
+
+---
+
+## 2. Platform Modules & Scenario Categories
+
+### Web Exploitation
+- Scenarios cover OWASP Top 10 vulnerabilities, including SQL Injection (SQLi), Cross-Site Scripting (XSS), Insecure Direct Object References (IDOR), Server-Side Request Forgery (SSRF), Cross-Site Request Forgery (CSRF), and Broken Access Control.
+- Example: "Mission Briefing" and "Corporate Portal Bypass" replicating developer oversights in response headers, authorization cookies, and database parameterization.
+
+### Cryptography & Secret Handling
+- Modern and historical cryptographic primitives, key exchange protocols, HMAC validation, hash collision demonstrations, and cipher analysis.
+
+### Reverse Engineering & Binary Exploitation
+- Disassembly, binary string analysis, memory corruption vectors, and instruction tracing for Windows and Linux binaries.
+
+### Open-Source Intelligence (OSINT) & Digital Forensics
+- Packet capture analysis (PCAP), metadata extraction, memory dump inspection, log auditing, and adversarial reconnaissance.
+
+### Network Penetration Testing
+- Service enumeration, banner grabbing, port scanning simulation, and credential brute-force mitigation drills.
+
+---
+
+## 3. Scoring Engine, Ranking Mechanics & Anti-Cheat
+
+### Mathematical Formula:
+```
+Trainee Points = Σ (Scenario Base Score - Penalties)
+```
+
+### Quota Enforcement:
+- Each scenario has a pre-configured maximum attempt limit (e.g., 3 attempts).
+- Each attempt is recorded atomically with timestamp, source IP, user agent, and validation status.
+- Once the attempt quota is exceeded without finding the valid flag, the scenario enters a locked state.
+- Super Administrators have dedicated tools to inspect blocked submissions and grant single-attempt exemptions where academically warranted.
+
+### Leaderboard Tie-Breaker:
+- Ties on total points are resolved deterministically: the trainee who achieved their latest point at an earlier timestamp is ranked higher.
+
+---
+
+## 4. Hardware Authorization & Machine Activation Gate (Zero-Trust)
+To allow the repository to remain publicly accessible for international client inspection, recruiter review, and portfolio evaluation while preventing unauthorized execution:
+- The system generates a deterministic Hardware ID (e.g., `OG-8492-F92A-K29B`) using system hardware characteristics.
+- The Django server enforces `apps.core.middleware.LicenseGateMiddleware` on all API traffic.
+- Unauthorized machines display a terminal warning and frontend glassmorphism modal:
+  ```
+  ⛔ [OffensiveGrid Security Gate]: Unauthorized Machine! This instance is locked.
+  You require an official authorization key from Haroon Atieeq to run OffensiveGrid.
+  Hardware ID: OG-8492-F92A-K29B
+  Contact: haroonatieeq6@gmail.com to request access.
+  ```
+- The author (Haroon Atieeq) issues cryptographically signed keys via HMAC-SHA256 (`OGLIC.<payload>.<signature>`) that bind to the requester's HWID.
+
+---
+
+## 5. Developer & Author Profile: Haroon Atieeq
+- **Name:** Haroon Atieeq (also known as Haroon Atieeque)
+- **Role:** Founder, Lead Developer & Offensive Security Engineer
+- **Website:** https://cszone.pk
+- **GitHub:** https://github.com/haroonatieeq352
+- **OffensiveGrid Repo:** https://github.com/haroonatieeq352/OffensiveGrid
+- **Email:** haroonatieeq6@gmail.com
+- **Expertise:** Full-Stack Web Development (Django, React, TypeScript), Offensive Cybersecurity, Penetration Testing, VAPT, CTF Challenge Engineering, Zero-Trust Architecture.

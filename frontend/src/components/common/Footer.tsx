@@ -42,18 +42,33 @@ export const Footer: React.FC = () => {
           {/* Center: Developer Watermark (Protected by Anti-Tamper Hook) */}
           <div 
             id="dev-watermark" 
-            className="flex flex-col items-center justify-center opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
+            className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity flex-shrink-0"
           >
             <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 font-semibold mb-0.5">
               Developed & Secured By
             </span>
-            <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-emerald-500 dark:from-indigo-500 dark:to-emerald-400 font-mono tracking-wider leading-none">
+            <a 
+              href="https://github.com/haroonatieeq352" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-emerald-500 dark:from-indigo-500 dark:to-emerald-400 font-mono tracking-wider leading-none hover:opacity-90"
+              title="Founder & Lead Developer: Haroon Atieeq"
+            >
               Haroon Atieeq
-            </span>
+            </a>
           </div>
 
-          {/* Right Side: Features/Version */}
+          {/* Right Side: Features / GitHub Repository / Version */}
           <div className="flex items-center gap-4 lg:gap-6 flex-1 justify-end">
+            <a
+              href="https://github.com/haroonatieeq352/OffensiveGrid"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-1 text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 font-mono transition-colors"
+              title="View OffensiveGrid Source Repository on GitHub"
+            >
+              <span>GitHub Repo</span>
+            </a>
             <span className="hidden sm:flex items-center gap-1 text-slate-400 dark:text-slate-500">
               <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               Isolated Labs
