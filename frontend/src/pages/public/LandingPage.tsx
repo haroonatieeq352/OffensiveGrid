@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
@@ -21,9 +21,11 @@ import { Card, CardContent } from '../../components/ui/Card';
 import { Badge } from '../../components/ui/Badge';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
+import { DeveloperProfileModal } from '../../components/common/DeveloperProfileModal';
 
 export const LandingPage: React.FC = () => {
   const { isAuthenticated } = useAuth();
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const domainCategories = [
     { title: 'Web Exploitation', icon: Globe, count: '12 Scenarios', desc: 'SQLi, XSS, SSRF, JWT & Authentication Bypasses', color: 'from-blue-500/10 to-indigo-500/10 text-indigo-600' },
@@ -240,61 +242,103 @@ export const LandingPage: React.FC = () => {
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-1 shadow-lg shrink-0">
-                <div className="w-full h-full rounded-xl bg-slate-900 flex items-center justify-center font-mono text-2xl font-black text-indigo-400 border border-indigo-400/30">
-                  HA
+              {/* Haroon Atieeq Official Portrait */}
+              <div 
+                onClick={() => setIsProfileOpen(true)}
+                className="relative group shrink-0 cursor-pointer"
+                title="Click to view full profile & achievements"
+              >
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-indigo-400/60 shadow-xl shadow-indigo-500/25 bg-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-indigo-400">
+                  <img 
+                    src="/haroon-atieeq.jpg" 
+                    alt="Haroon Atieeq — Junior Penetration Tester" 
+                    className="w-full h-full object-cover object-top" 
+                  />
                 </div>
+                <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-slate-900"></span>
+                </span>
               </div>
               
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold">
-                  Founder & Lead Developer
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold">
+                    Founder & Lead Developer
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold">
+                    CEH & CCNA Certified
+                  </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                  Haroon Atieeq
+
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center justify-center sm:justify-start gap-2">
+                  <span>Haroon Atieeq</span>
+                  <span className="text-xs font-mono font-normal text-slate-400">(@haroonatieeq352)</span>
                 </h3>
-                <p className="text-sm text-slate-300 max-w-xl leading-relaxed">
-                  Offensive Security Engineer and Full-Stack Systems Architect. Engineered OffensiveGrid as a premier, battle-tested cyber range to advance offensive security education, ethical hacking, and vulnerability assessment methodologies.
+
+                <p className="text-xs sm:text-sm text-indigo-300 font-mono font-medium">
+                  Junior Penetration Tester at CSZone Pvt. Ltd  |  VAPT & Application Security
                 </p>
+
+                <p className="text-sm text-slate-300 max-w-xl leading-relaxed">
+                  Offensive Security Engineer and Full-Stack Systems Architect. Selected for a Microsoft-sponsored CVE research study, author of 94-page Enterprise VAPT Playbook, and IEEE-published Best FYP CyberMaze recipient.
+                </p>
+
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-2 text-xs font-mono text-slate-400">
                   <span className="flex items-center gap-1">
                     <Globe className="w-3.5 h-3.5 text-indigo-400" /> cszone.pk
                   </span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
-                    <Shield className="w-3.5 h-3.5 text-emerald-400" /> Red/Blue Team Research
+                    <Shield className="w-3.5 h-3.5 text-emerald-400" /> OWASP WSTG / PTES / NIST
                   </span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
-                    <Terminal className="w-3.5 h-3.5 text-purple-400" /> Django & React Core
+                    <Terminal className="w-3.5 h-3.5 text-purple-400" /> React & Django 5 Core
                   </span>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto shrink-0">
+              <Button 
+                size="md" 
+                variant="primary" 
+                onClick={() => setIsProfileOpen(true)}
+                className="w-full justify-center shadow-lg shadow-indigo-500/25 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500"
+              >
+                View Full Profile & CV
+              </Button>
+              <a 
+                href="https://www.linkedin.com/in/haroon-atieeque-2b8867378" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button size="md" variant="outline" className="w-full justify-center bg-blue-900/20 border-blue-500/40 text-blue-300 hover:bg-blue-900/40">
+                  Connect on LinkedIn
+                </Button>
+              </a>
               <a 
                 href="https://github.com/haroonatieeq352/OffensiveGrid" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
               >
-                <Button size="md" variant="primary" className="w-full justify-center shadow-lg shadow-indigo-500/25">
-                  Explore GitHub Repo
-                </Button>
-              </a>
-              <a 
-                href="mailto:haroonatieeq6@gmail.com?subject=OffensiveGrid%20Evaluation%20License%20Request"
-                className="w-full sm:w-auto"
-              >
                 <Button size="md" variant="outline" className="w-full justify-center bg-slate-900/60 border-slate-700 text-white hover:bg-slate-800">
-                  Request License Key
+                  Explore GitHub Repo
                 </Button>
               </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Developer Profile Modal */}
+      <DeveloperProfileModal 
+        isOpen={isProfileOpen} 
+        onClose={() => setIsProfileOpen(false)} 
+      />
 
       <Footer />
     </div>

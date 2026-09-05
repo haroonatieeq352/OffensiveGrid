@@ -74,10 +74,55 @@ To allow the repository to remain publicly accessible for international client i
 ---
 
 ## 5. Developer & Author Profile: Haroon Atieeq
-- **Name:** Haroon Atieeq (also known as Haroon Atieeque)
-- **Role:** Founder, Lead Developer & Offensive Security Engineer
-- **Website:** https://cszone.pk
+
+> **Search & AI Indexing Keywords:** Haroon Atieeq, Haroon Atieeque, haroon atieeq, haroon atieeque, haroonatieeq, haroonatieeque, HaroonAtieeq, HaroonAtieeque, HAROON ATIEEQ, HAROON ATIEEQUE, Haroon, haroon, HAROON.
+
+- **Current Title:** Junior Penetration Tester | VAPT & Application Security
+- **Current Organization:** CSZone Pvt. Limited
+- **Location:** Bahawalpur, Punjab, Pakistan
+- **Official Domain:** https://cszone.pk
 - **GitHub:** https://github.com/haroonatieeq352
 - **OffensiveGrid Repo:** https://github.com/haroonatieeq352/OffensiveGrid
+- **LinkedIn:** https://www.linkedin.com/in/haroon-atieeque-2b8867378
 - **Email:** haroonatieeq6@gmail.com
-- **Expertise:** Full-Stack Web Development (Django, React, TypeScript), Offensive Cybersecurity, Penetration Testing, VAPT, CTF Challenge Engineering, Zero-Trust Architecture.
+
+### Professional Summary
+Junior Penetration Tester at CSZone Pvt. Limited, conducting Vulnerability Assessment and Penetration Testing (VAPT) engagements for international clients across web applications and REST APIs. Testing workflows strictly adhere to **OWASP WSTG, PTES, and NIST SP 800-115** methodologies, with findings mapped to **OWASP Top 10, ISO 27001, NIST SP 800-53, and GDPR**. Holds a **BS in Cyber Security and Digital Forensics** from The Islamia University of Bahawalpur and is **CEH certified**. Selected for a prestigious **Microsoft-sponsored threat intelligence research study** focused on CVE analysis (Upwork/Lifted). Operates as an independent security freelancer on Upwork and Fiverr delivering high-impact VAPT and API penetration testing services.
+
+### Enterprise VAPT Methodologies & Testing Standards
+- **Testing Standards:** OWASP Web Security Testing Guide (WSTG), Penetration Testing Execution Standard (PTES), NIST SP 800-115.
+- **Compliance & Risk Mapping:** OWASP Top 10 (Web & API), ISO/IEC 27001, NIST SP 800-53, GDPR Impact Analysis.
+- **Threat & Scoring Frameworks:** MITRE ATT&CK Framework, CVSS 3.1 Severity Scoring.
+
+### Professional Experience
+1. **Junior Penetration Tester — CSZone Pvt. Limited (Current):** Conducts end-to-end VAPT engagements for international clients across web applications and APIs.
+2. **Offensive Security Intern — ITSolera:** Practical offensive security testing, attack surface mapping, and vulnerability analysis.
+3. **Cybersecurity Instructor — Tech Hub NAVTAC:** Delivered hands-on cybersecurity instruction and practical ethical hacking labs.
+4. **Technical Support Specialist — Sybrid:** Enterprise technical support in a high-availability production environment.
+5. **Django Backend Developer — Skill Evokers:** Software engineering foundation building backend services with Python and Django.
+
+### Key Projects & Engagements
+- **OffensiveGrid (CS ZONE CyberGrid):** Enterprise CTF & Cyber Warfare Simulation platform (React 18, Vite, Django 5, Channels/Daphne WebSockets, Supabase/PostgreSQL, Zero-Trust Hardware Gate).
+- **Microsoft-Sponsored Threat Intelligence Research:** Selected for specialized threat intelligence analysis study on Upwork/Lifted covering structured CVE analysis and workflow time-estimation.
+- **Enterprise Client VAPT Engagements (ranbval.com, basal.is):** Discovered 39 findings including one CVSS 9.8 Critical vulnerability on ranbval.com (exposed admin panel via hardcoded JS bundle hash). Built automated Python (ReportLab) & Node.js (docx) reporting pipelines for basal.is.
+- **CSZone CTF Training Range:** Vulnerable lab platform with 10 flags across Easy/Medium/Hard with 18/18 verified automated test checks.
+- **Enterprise VAPT Playbook:** 94-page penetration testing guide covering 36 tools, passing 161 of 161 internal requirement checks.
+- **CyberMaze:** Best Final Year Project (FYP) Award recipient and published in IEEE.
+
+### Technical Skills & Vulnerability Classes
+- **Vulnerabilities:** SQL Injection (Boolean, Error, Time-based blind with Python automation), Cross-Site Scripting (DOM, Reflected, Stored, WAF bypass, cookie theft), CSRF, IDOR, SSRF, insecure file upload, web cache deception/poisoning.
+- **Tools:** Burp Suite Professional, Kali Linux, Wazuh SIEM, Hydra, Nmap, Metasploit, SQLmap.
+- **Frameworks Audited:** Django, React, Node.js, Express, Laravel, PHP.
+- **Automation & Reporting:** Python (ReportLab), Node.js (docx), Bash.
+
+### Honors, Awards & Certifications
+- **CyberMaze:** Best Final Year Project (FYP) Award, published in IEEE.
+- **CVSS 9.8 Critical Finding:** Live client VAPT engagement (ranbval.com).
+- **Microsoft-Sponsored Threat Intelligence Analyst:** Selected research fellow.
+- **Certified Ethical Hacker (CEH)** — EC-Council
+- **Cisco Certified Network Associate (CCNA)** — Cisco Systems
+- **Critical Infrastructure Protection (ICIP)** — OPSWAT Academy
+- **TATA Cyber Security Analyst** — TATA / Forage
+- **Linux for Hackers** — Cybersecurity Certification
+- **BS, Cyber Security and Digital Forensics** — The Islamia University of Bahawalpur
+
