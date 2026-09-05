@@ -260,28 +260,28 @@ export const ScenarioDetailPage: React.FC = () => {
 
         {/* Target Environment Box (Unlocked vs Locked) */}
         {!isLocked && scenario.target_url ? (
-          <div className="mt-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-cyan-500/[0.08] via-slate-50 to-indigo-500/[0.06] dark:from-slate-900/95 dark:via-cyan-950/25 dark:to-slate-900/95 border border-cyan-200/90 dark:border-cyan-500/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="mt-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-cyan-500/[0.09] via-slate-50 to-indigo-500/[0.07] dark:from-slate-900/95 dark:via-cyan-950/25 dark:to-slate-900/95 border-2 border-cyan-500/50 dark:border-cyan-500/40 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1.5 min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="text-xs font-mono font-bold text-cyan-800 dark:text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
                   <Zap className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                   Isolated Sandbox Lab Target
                 </span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800/60">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-400/80 dark:border-emerald-800/60">
                   LIVE TARGET
                 </span>
               </div>
               <div className="flex items-center gap-2 max-w-xl">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 shadow-2xs flex-1 min-w-0">
-                  <Globe className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
-                  <code className="text-xs sm:text-sm font-mono font-semibold text-slate-800 dark:text-cyan-300 truncate select-all">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700 shadow-2xs flex-1 min-w-0">
+                  <Globe className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
+                  <code className="text-xs sm:text-sm font-mono font-bold text-slate-900 dark:text-cyan-300 truncate select-all">
                     {scenario.target_url}
                   </code>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleCopyUrl(scenario.target_url!)}
-                  className="p-2 rounded-xl bg-white dark:bg-slate-950/80 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all shadow-2xs shrink-0 flex items-center justify-center"
+                  className="p-2 rounded-xl bg-white dark:bg-slate-950/80 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all shadow-2xs shrink-0 flex items-center justify-center"
                   title="Copy Target URL"
                 >
                   {copiedTargetUrl ? (
