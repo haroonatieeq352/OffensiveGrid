@@ -22,7 +22,12 @@ import {
   Link as LinkIcon,
   Microscope,
   ShieldCheck,
-  Network
+  Network,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Layers
 } from 'lucide-react';
 import { scenarioService, submissionService, tournamentService, taxonomyService } from '../../services/api';
 import { Scenario, Category, Difficulty } from '../../types';
@@ -44,7 +49,24 @@ export const ScenarioCatalogPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [pageSize, setPageSize] = useState<number>(9);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Anti-Tamper & Zero-Exploit Sanitizer for Search Input
+  const sanitizeSearchInput = (raw: string): string => {
+    // 1. Cap length at 64 characters to block buffer/payload stuffing
+    let clean = raw.slice(0, 64);
+    // 2. Strip dangerous characters used in XSS, SQLi, and template injections
+    clean = clean.replace(/[<>'"`;\\{}[\]()]/g, '');
+    return clean;
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const clean = sanitizeSearchInput(e.target.value);
+    setSearchQuery(clean);
+    setCurrentPage(1);
+  };
 
   // Pro Upgrade Modal & Toast state
   const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
@@ -119,12 +141,18 @@ export const ScenarioCatalogPage: React.FC = () => {
     if (selectedDifficulty !== 'ALL' && (sc.difficulty?.id || sc.difficulty) !== selectedDifficulty) {
       matchesDifficulty = false;
     }
+    const cleanSearch = searchQuery.trim().toLowerCase();
     const matchesSearch =
-      searchQuery === '' ||
-      sc.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sc.description.toLowerCase().includes(searchQuery.toLowerCase());
+      cleanSearch === '' ||
+      sc.title.toLowerCase().includes(cleanSearch) ||
+      sc.description.toLowerCase().includes(cleanSearch);
     return matchesCategory && matchesDifficulty && matchesSearch;
   });
+
+  const totalPages = pageSize === -1 ? 1 : Math.max(1, Math.ceil(filteredScenarios.length / pageSize));
+  const paginatedScenarios = pageSize === -1
+    ? filteredScenarios
+    : filteredScenarios.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   const handleOpenUpgrade = (sc?: Scenario) => {
     setSelectedPaidScenario(sc || null);
@@ -209,74 +237,143 @@ export const ScenarioCatalogPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Domain Filters & Search Bar */}
-      <div className="space-y-4">
-        {/* Search & Difficulty Filter Toolbar */}
+      {/* Enterprise Combat Matrix Control Toolbar */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800/80 p-4 shadow-sm space-y-3.5">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
-          {/* Search Input */}
-          <div className="w-full lg:max-w-md">
-            <Input
-              placeholder="Search scenarios by title, CVE, or keyword..."
+          
+          {/* 1. Ultra-Secure Anti-Tamper Search Input */}
+          <div className="relative flex-1 max-w-xl">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <Search className="w-4 h-4" />
+            </div>
+            <input
+              type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              leftIcon={<Search className="w-4 h-4 text-slate-400" />}
-              className="dark:bg-slate-900 dark:border-slate-700 dark:text-white"
+              onChange={handleSearchChange}
+              maxLength={64}
+              placeholder="Search scenarios by title, CVE, or attack vector..."
+              className="w-full pl-10 pr-10 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all font-medium"
             />
+            {searchQuery && (
+              <button
+                onClick={() => { setSearchQuery(''); setCurrentPage(1); }}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                title="Clear Search"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
           </div>
 
-          {/* Difficulty Filter Bar */}
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 flex-wrap">
-            <Filter className="w-3.5 h-3.5 text-slate-400 ml-1" />
-            <span className="font-semibold text-slate-700 dark:text-slate-300 mr-1 text-[11px]">Difficulty:</span>
-            <div className="flex flex-wrap gap-2">
-            {[{id: 'ALL', name: 'ALL'}, ...difficulties].map((diff) => (
-              <button
-                key={diff.id}
-                onClick={() => setSelectedDifficulty(diff.id)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                  selectedDifficulty === diff.id
-                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm'
-                    : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
-                }`}
+          {/* 2. Enterprise Dropdown Filters Group */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            
+            {/* Category / Domain Dropdown */}
+            <div className="relative flex items-center">
+              <div className="absolute left-3 pointer-events-none text-indigo-600 dark:text-indigo-400">
+                <Shield className="w-4 h-4" />
+              </div>
+              <select
+                value={selectedCategory}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="pl-9 pr-8 py-2.5 rounded-xl text-xs font-bold bg-slate-50 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 cursor-pointer transition-all appearance-none"
               >
-                {diff.name}
-              </button>
-            ))}
+                <option value="ALL">All Domains ({scenarios.length})</option>
+                {categories.map((cat) => {
+                  const catCount = scenarios.filter((s) => s.category.slug === cat.slug).length;
+                  return (
+                    <option key={cat.id} value={cat.slug}>
+                      {cat.name} ({catCount})
+                    </option>
+                  );
+                })}
+              </select>
+              <div className="absolute right-2.5 pointer-events-none text-slate-400">
+                <ChevronDown className="w-3.5 h-3.5" />
+              </div>
             </div>
+
+            {/* Difficulty Dropdown */}
+            <div className="relative flex items-center">
+              <div className="absolute left-3 pointer-events-none text-amber-500">
+                <Filter className="w-4 h-4" />
+              </div>
+              <select
+                value={selectedDifficulty}
+                onChange={(e) => {
+                  setSelectedDifficulty(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="pl-9 pr-8 py-2.5 rounded-xl text-xs font-bold bg-slate-50 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 cursor-pointer transition-all appearance-none"
+              >
+                <option value="ALL">All Difficulties</option>
+                {difficulties.map((diff) => (
+                  <option key={diff.id} value={diff.id}>
+                    {diff.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-2.5 pointer-events-none text-slate-400">
+                <ChevronDown className="w-3.5 h-3.5" />
+              </div>
+            </div>
+
+            {/* Pagination Size Dropdown */}
+            <div className="relative flex items-center">
+              <div className="absolute left-3 pointer-events-none text-purple-500 dark:text-purple-400">
+                <Layers className="w-4 h-4" />
+              </div>
+              <select
+                value={pageSize}
+                onChange={(e) => {
+                  setPageSize(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
+                className="pl-9 pr-8 py-2.5 rounded-xl text-xs font-bold bg-slate-50 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 cursor-pointer transition-all appearance-none"
+              >
+                <option value="6">6 Scenarios / Page</option>
+                <option value="9">9 Scenarios / Page</option>
+                <option value="12">12 Scenarios / Page</option>
+                <option value="18">18 Scenarios / Page</option>
+                <option value="-1">Show All</option>
+              </select>
+              <div className="absolute right-2.5 pointer-events-none text-slate-400">
+                <ChevronDown className="w-3.5 h-3.5" />
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* Category Filter Chips - Natural Flex Wrap (Zero Horizontal Scrolling Needed!) */}
-        <div className="flex flex-wrap items-center gap-2 pt-1">
-          <button
-            onClick={() => setSelectedCategory('ALL')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs ${
-              selectedCategory === 'ALL'
-                ? 'bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-600/30'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700'
-            }`}
-          >
-            <Shield className="w-3.5 h-3.5" />
-            All Domains ({scenarios.length})
-          </button>
-          {categories.map((cat) => {
-            const catCount = scenarios.filter((s) => s.category.slug === cat.slug).length;
-            const isSelected = selectedCategory === cat.slug;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.slug)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs ${
-                  isSelected
-                    ? 'bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-600/30'
-                    : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700'
-                }`}
-              >
-                {getDomainIcon(cat.icon)}
-                {cat.name} ({catCount})
-              </button>
-            );
-          })}
+        {/* Live Filter Telemetry & Quick Reset Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/70 text-xs">
+          <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 font-mono">
+            <span>
+              Showing <strong className="text-slate-900 dark:text-white font-bold">{filteredScenarios.length > 0 ? (currentPage - 1) * (pageSize === -1 ? filteredScenarios.length : pageSize) + 1 : 0}</strong>–<strong className="text-slate-900 dark:text-white font-bold">{Math.min(currentPage * (pageSize === -1 ? filteredScenarios.length : pageSize), filteredScenarios.length)}</strong> of <strong className="text-indigo-600 dark:text-indigo-400 font-bold">{filteredScenarios.length}</strong> Scenarios
+            </span>
+            {(selectedCategory !== 'ALL' || selectedDifficulty !== 'ALL' || searchQuery.trim() !== '') && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-sans font-semibold text-[11px]">
+                Filtered
+              </span>
+            )}
+          </div>
+
+          {(selectedCategory !== 'ALL' || selectedDifficulty !== 'ALL' || searchQuery.trim() !== '') && (
+            <button
+              onClick={() => {
+                setSelectedCategory('ALL');
+                setSelectedDifficulty('ALL');
+                setSearchQuery('');
+                setCurrentPage(1);
+              }}
+              className="text-xs font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1 transition-colors"
+            >
+              <X className="w-3.5 h-3.5" /> Reset Filters
+            </button>
+          )}
         </div>
       </div>
 
@@ -309,7 +406,7 @@ export const ScenarioCatalogPage: React.FC = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredScenarios.map((scenario) => {
+          {paginatedScenarios.map((scenario) => {
             const isLocked = scenario.is_paid && !hasProAccess;
             const isSolved = solvedScenarioIds.has(scenario.id);
 
@@ -401,6 +498,88 @@ export const ScenarioCatalogPage: React.FC = () => {
               </Card>
             );
           })}
+        </div>
+      )}
+
+      {/* Enterprise Pagination Bar */}
+      {!isLoading && filteredScenarios.length > 0 && totalPages > 1 && (
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800/80 p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            Page <span className="font-bold text-slate-900 dark:text-white">{currentPage}</span> of{' '}
+            <span className="font-bold text-slate-900 dark:text-white">{totalPages}</span>
+            <span className="mx-2 text-slate-300 dark:text-slate-700">|</span>
+            <span className="font-mono">{filteredScenarios.length} Total Scenarios</span>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => {
+                setCurrentPage((prev) => Math.max(1, prev - 1));
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+              }}
+              disabled={currentPage === 1}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 border ${
+                currentPage === 1
+                  ? 'opacity-40 cursor-not-allowed bg-slate-100 dark:bg-slate-800/50 text-slate-400 dark:text-slate-600 border-slate-200 dark:border-slate-800'
+                  : 'bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 shadow-xs'
+              }`}
+            >
+              <ChevronLeft className="w-3.5 h-3.5" /> Previous
+            </button>
+
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                if (
+                  totalPages > 7 &&
+                  page !== 1 &&
+                  page !== totalPages &&
+                  Math.abs(page - currentPage) > 1
+                ) {
+                  if (page === 2 || page === totalPages - 1) {
+                    return (
+                      <span key={page} className="px-1 text-xs text-slate-400">
+                        ...
+                      </span>
+                    );
+                  }
+                  return null;
+                }
+
+                const isActive = page === currentPage;
+                return (
+                  <button
+                    key={page}
+                    onClick={() => {
+                      setCurrentPage(page);
+                      window.scrollTo({ top: 200, behavior: 'smooth' });
+                    }}
+                    className={`min-w-[32px] h-8 px-2 rounded-xl text-xs font-bold transition-all ${
+                      isActive
+                        ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={() => {
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1));
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+              }}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 border ${
+                currentPage === totalPages
+                  ? 'opacity-40 cursor-not-allowed bg-slate-100 dark:bg-slate-800/50 text-slate-400 dark:text-slate-600 border-slate-200 dark:border-slate-800'
+                  : 'bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 shadow-xs'
+              }`}
+            >
+              Next <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       )}
     </div>
