@@ -251,7 +251,7 @@ export const LandingPage: React.FC = () => {
                 <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-indigo-400/60 shadow-xl shadow-indigo-500/25 bg-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-indigo-400">
                   <img 
                     src="/haroon-atieeq.jpg" 
-                    alt="Haroon Atieeq — Junior Penetration Tester" 
+                    alt="Haroon Atieeq — Penetration Tester" 
                     className="w-full h-full object-cover object-top" 
                   />
                 </div>
@@ -277,7 +277,7 @@ export const LandingPage: React.FC = () => {
                 </h3>
 
                 <p className="text-xs sm:text-sm text-indigo-300 font-mono font-medium">
-                  Junior Penetration Tester at CSZone Pvt. Ltd  |  VAPT & Application Security
+                  Penetration Tester at CSZone Pvt. Ltd  |  VAPT & Application Security
                 </p>
 
                 <p className="text-sm text-slate-300 max-w-xl leading-relaxed">

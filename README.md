@@ -256,7 +256,7 @@ If you are an **international client, corporate security team, university instru
 <div align="center">
 
 ### **Haroon Atieeq** (Haroon Atieeque)
-**Junior Penetration Tester | VAPT & Application Security**  
+**Penetration Tester | VAPT & Application Security**  
 *Lead Developer & Architect, OffensiveGrid*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Haroon%20Atieeque-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/haroon-atieeque-2b8867378)
@@ -266,7 +266,7 @@ If you are an **international client, corporate security team, university instru
 
 </div>
 
-Haroon Atieeq is a Junior Penetration Tester at **CSZone Pvt. Limited**, delivering comprehensive Vulnerability Assessment and Penetration Testing (VAPT) engagements for international clients across web applications and REST APIs. His testing workflows strictly adhere to **OWASP WSTG, PTES, and NIST SP 800-115** methodologies, with findings mapped to **OWASP Top 10, ISO 27001, NIST SP 800-53, and GDPR**.
+Haroon Atieeq is a Penetration Tester at **CSZone Pvt. Limited**, delivering comprehensive Vulnerability Assessment and Penetration Testing (VAPT) engagements for international clients across web applications and REST APIs. His testing workflows strictly adhere to **OWASP WSTG, PTES, and NIST SP 800-115** methodologies, with findings mapped to **OWASP Top 10, ISO 27001, NIST SP 800-53, and GDPR**.
 
 - 🎓 **Education:** BS, Cyber Security and Digital Forensics — The Islamia University of Bahawalpur.
 - 🏆 **IEEE Publication:** **CyberMaze** awarded Best Final Year Project (FYP) and officially published in **IEEE**.

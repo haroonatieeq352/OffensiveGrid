@@ -73,7 +73,7 @@ export const DeveloperProfileModal: React.FC<DeveloperProfileModalProps> = ({ is
               </div>
 
               <p className="text-sm font-semibold text-indigo-400 font-mono">
-                Junior Penetration Tester  |  VAPT & Application Security
+                Penetration Tester  |  VAPT & Application Security
               </p>
 
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-400 pt-1">
@@ -166,7 +166,7 @@ export const DeveloperProfileModal: React.FC<DeveloperProfileModalProps> = ({ is
                   <Sparkles className="w-4 h-4 text-indigo-400" /> Professional Summary
                 </h3>
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                  Junior Penetration Tester at <strong>CSZone Pvt. Limited</strong>, conducting comprehensive Vulnerability Assessment and Penetration Testing (VAPT) engagements for international clients. Testing workflows follow rigorous <strong>OWASP WSTG, PTES, and NIST SP 800-115</strong> methodologies, with risk findings mapped to <strong>OWASP Top 10, ISO 27001, NIST SP 800-53, and GDPR</strong>.
+                  Penetration Tester at <strong>CSZone Pvt. Limited</strong>, conducting comprehensive Vulnerability Assessment and Penetration Testing (VAPT) engagements for international clients. Testing workflows follow rigorous <strong>OWASP WSTG, PTES, and NIST SP 800-115</strong> methodologies, with risk findings mapped to <strong>OWASP Top 10, ISO 27001, NIST SP 800-53, and GDPR</strong>.
                 </p>
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                   Holds a <strong>BS in Cyber Security and Digital Forensics</strong> from The Islamia University of Bahawalpur and is <strong>CEH certified</strong>. Selected for a prestigious <strong>Microsoft-sponsored threat intelligence research study</strong> on Upwork/Lifted focused on CVE analysis. Also operates as an independent VAPT consultant delivering API and web application security assessments.
@@ -221,7 +221,7 @@ export const DeveloperProfileModal: React.FC<DeveloperProfileModalProps> = ({ is
             <div className="space-y-4 animate-in fade-in duration-150">
               {[
                 {
-                  role: 'Junior Penetration Tester',
+                  role: 'Penetration Tester',
                   company: 'CSZone Pvt. Limited',
                   date: 'Current',
                   badge: 'Active Role',
