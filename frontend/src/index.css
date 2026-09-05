@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   OffensiveGrid — Enterprise Design System
+   Pristine Light Theme (Clean SaaS) · Velvet Obsidian Dark Theme (Arrakis / Linear / Railway)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  /* ── Light Theme Root Variables (Lighter Crisp Slate Canvas) ── */
+  :root {
+    --bg-base: #DFE5EC;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #F1F5F9;
+    --bg-overlay: #FFFFFF;
+    --border-default: #CBD5E1;
+    --border-hover: #94A3B8;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --accent-primary: #4F46E5;
+    --accent-cyan: #0891B2;
+    --accent-emerald: #059669;
+    --accent-rose: #E11D48;
+    --accent-amber: #D97706;
+  }
+
+  /* ── Dark Theme Root Variables (Obsidian Cyber) ── */
+  .dark {
+    --bg-base: #06080D;
+    --bg-surface: #0C1017;
+    --bg-elevated: #111622;
+    --bg-overlay: #161D2E;
+    --border-default: rgba(255, 255, 255, 0.07);
+    --border-hover: rgba(99, 102, 241, 0.35);
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-primary: #818CF8;
+    --accent-cyan: #22D3EE;
+    --accent-emerald: #34D399;
+    --accent-rose: #FB7185;
+    --accent-amber: #FBBF24;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.25s ease, color 0.2s ease;
+  }
+
+  .dark body {
+    background-color: #06080D;
+    color: #FFFFFF;
+  }
+
+  .dark ::selection {
+    background-color: rgba(99, 102, 241, 0.35);
+    color: #FFFFFF;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SURFACE ELEVATION & CARDS — DETERMINISTIC DUAL-THEME TOKENS
+   Light: Solid SaaS White (#FFFFFF) on Deep Slate (#E2E8F0)
+   Dark: Layered Velvet Obsidian (#0C1017) & Cosmic Black (#06080D)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Page Background Canvas */
+.surface-base {
+  background-color: #DFE5EC;
+}
+.dark .surface-base {
+  background-color: #06080D;
+}
+
+/* Standard SaaS Card — 100% Isolated Dual-Theme */
+.card-saas {
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1; /* Crisp high-contrast slate-300 border */
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.05); /* Distinct physical shadow */
+  transition: all 0.2s ease-in-out;
+}
+.card-saas:hover {
+  border-color: #94A3B8;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 10px 20px -5px rgba(15, 23, 42, 0.08);
+}
+
+.dark .card-saas {
+  background-color: #0C1017;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.6);
+}
+.dark .card-saas:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.7), 0 0 16px -4px rgba(99, 102, 241, 0.15);
+}
+
+/* Glass Card */
+.glass-card {
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.08);
+  transition: all 0.25s ease;
+}
+.glass-card:hover {
+  border-color: #94A3B8;
+}
+
+.dark .glass-card {
+  background-color: rgba(12, 16, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5);
+}
+.dark .glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.30);
+}
+
+/* Top Sticky Navigation Bar */
+.glass-nav {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #CBD5E1;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+.dark .glass-nav {
+  background-color: rgba(12, 16, 23, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Subtle Border Utility */
+.subtle-border {
+  border: 1px solid #CBD5E1;
+}
+.dark .subtle-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CYBER GRID BACKGROUND
+   Light: Deep Slate #E2E8F0 with crisp #94A3B8 matrix dots for 10% contrast depth
+   Dark: Faint subtle dots on obsidian black
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cyber-grid-bg {
+  background-color: #DFE5EC; /* Lighter clean neutral slate canvas - solid plain */
+  background-image: none;
+}
+
+.dark .cyber-grid-bg {
+  background-color: #06080D;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CLEAN SCROLLBARS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0C1017;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RECHARTS DARK OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.dark .recharts-default-tooltip {
+  background-color: #111622 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7) !important;
+  color: #FFFFFF !important;
+}
+
+.dark .recharts-tooltip-label {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.dark .recharts-tooltip-item {
+  color: #94A3B8 !important;
+}
+
+.dark .recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .recharts-text {
+  fill: #64748B !important;
+}
+
