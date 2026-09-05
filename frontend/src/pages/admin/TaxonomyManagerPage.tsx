@@ -53,6 +53,35 @@ export const TaxonomyManagerPage: React.FC = () => {
     setToast({ type, title, message, duration: 5000 });
   };
 
+  const parseErrorMessage = (err: any, fallback: string) => {
+    const errorObj = err.response?.data?.error;
+    if (errorObj?.details && typeof errorObj.details === 'object') {
+      const fieldErrors = Object.entries(errorObj.details)
+        .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+        .join(' | ');
+      if (fieldErrors) return fieldErrors;
+    }
+    if (err.response?.data && typeof err.response.data === 'object' && !err.response.data.error) {
+      const fieldErrors = Object.entries(err.response.data)
+        .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+        .join(' | ');
+      if (fieldErrors) return fieldErrors;
+    }
+    return errorObj?.message || err.response?.data?.detail || err.message || fallback;
+  };
+
+  const handleCatNameChange = (val: string) => {
+    setCatName(val);
+    if (!editingCategory) {
+      const autoSlug = val
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+      setCatSlug(autoSlug);
+    }
+  };
+
   const fetchData = async () => {
     setIsLoading(true);
     try {
@@ -64,7 +93,7 @@ export const TaxonomyManagerPage: React.FC = () => {
         setDifficulties(diffs);
       }
     } catch (err: any) {
-      const msg = err.response?.data?.error?.message || err.response?.data?.detail || 'Failed to load data';
+      const msg = parseErrorMessage(err, 'Failed to load data');
       showToast('error', 'Fetch Error', msg);
     } finally {
       setIsLoading(false);
@@ -88,8 +117,8 @@ export const TaxonomyManagerPage: React.FC = () => {
       setIsCategoryModalOpen(false);
       fetchData();
     } catch (err: any) {
-      const msg = err.response?.data?.error?.message || err.response?.data?.detail || 'Failed to save category';
-      showToast('error', 'Error', msg);
+      const msg = parseErrorMessage(err, 'Failed to save category');
+      showToast('error', 'Validation Error', msg);
     }
   };
 
@@ -106,8 +135,8 @@ export const TaxonomyManagerPage: React.FC = () => {
       setIsDifficultyModalOpen(false);
       fetchData();
     } catch (err: any) {
-      const msg = err.response?.data?.error?.message || err.response?.data?.detail || 'Failed to save difficulty';
-      showToast('error', 'Error', msg);
+      const msg = parseErrorMessage(err, 'Failed to save difficulty');
+      showToast('error', 'Validation Error', msg);
     }
   };
 
@@ -484,7 +513,7 @@ export const TaxonomyManagerPage: React.FC = () => {
                 <label className="block text-sm font-medium mb-1">Name</label>
                 <Input
                   value={catName}
-                  onChange={(e) => setCatName(e.target.value)}
+                  onChange={(e) => handleCatNameChange(e.target.value)}
                   maxLength={100}
                   placeholder="e.g. Web Exploitation"
                 />
