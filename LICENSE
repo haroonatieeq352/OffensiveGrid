@@ -1,0 +1,42 @@
+OFFENSIVEGRID PROPRIETARY & AUTHORIZED USE LICENSE
+Copyright (c) 2026 Haroon Atieeq. All Rights Reserved.
+
+================================================================================
+IMPORTANT NOTICE: THIS SOFTWARE IS PROPRIETARY AND REQUIRES PRIOR AUTHORIZATION.
+================================================================================
+
+1. OWNERSHIP & INTELLECTUAL PROPERTY
+OffensiveGrid (including all source code, software architecture, CTF challenge scenarios, 
+scoring engines, database models, and user interface components) is the exclusive, 
+proprietary intellectual property of Haroon Atieeq ("Author & Copyright Holder").
+
+2. MANDATORY AUTHORIZATION FOR CLONING & LOCAL SETUP
+NO PERSON, STUDENT, RESEARCHER, ACADEMIC INSTITUTION, OR COMMERCIAL ENTITY IS PERMITTED 
+TO CLONE, DOWNLOAD, COPY, RUN, EXECUTE, MODIFY, REDISTRIBUTE, OR DEPLOY THIS SOFTWARE 
+WITHOUT EXPLICIT, PRIOR WRITTEN PERMISSION AND AUTHORIZATION FROM HAROON ATIEEQ.
+
+3. ACADEMIC & TRAINEE ACCESS REQUESTS
+If you are a student, researcher, university instructor, or cybersecurity team wishing 
+to clone and run OffensiveGrid locally on your system for educational or research purposes:
+   - You MUST first contact the author to request an official authorization grant.
+   - Upon review and written approval by Haroon Atieeq, you will be granted a limited, 
+     non-exclusive, non-transferable, revocable license to run this project strictly 
+     for approved educational evaluation.
+
+4. COMMERCIAL RESTRICTIONS
+Commercial use, hosting as a public or private SaaS training platform, sale, sublicensing, 
+or incorporation of this codebase into proprietary commercial products without a signed 
+commercial licensing agreement with Haroon Atieeq is strictly prohibited.
+
+5. CONTACT FOR PERMISSION & COLLABORATION
+To request authorization to clone, run, or collaborate on OffensiveGrid, please contact:
+   - Lead Developer & Founder: Haroon Atieeq
+   - Email: haroonatieeq6@gmail.com
+   - Official Platform Domain: https://cszone.pk
+   - GitHub: https://github.com/haroonatieeq352
+
+================================================================================
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER 
+LIABILITY ARISING FROM THE USE OR INABILITY TO USE THIS SOFTWARE.
+================================================================================
