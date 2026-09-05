@@ -25,6 +25,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://cszone.pk/llms-full.txt</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://cszone.pk/register</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
