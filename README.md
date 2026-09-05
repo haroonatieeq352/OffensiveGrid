@@ -204,18 +204,6 @@ npm run dev -- --host 0.0.0.0
 
 ---
 
-## 🔑 Default Seed Credentials
-
-After running `python manage.py seed_offensivegrid`, the following development accounts are pre-configured:
-
-| Role | Username | Email | Password | Access Level |
-| :--- | :--- | :--- | :--- | :--- |
-| **Super Admin** | `admin` | `admin@cszone.io` | `Admin1234!` | Full System Administration, Scenarios, 2FA, Attempt Resets |
-| **Instructor** | `instructor1` | `instructor@cszone.io` | `Instructor1234!` | Scenario Creation, Reviewing Submissions |
-| **Trainee / Student** | `trainee1` | `student@cszone.io` | `Student1234!` | Challenge Catalog, Flag Submission, Live Leaderboard |
-
----
-
 ## 🔒 Security Guardrails & Anti-Cheat
 
 OffensiveGrid is built with a **Zero-Trust** security posture:
