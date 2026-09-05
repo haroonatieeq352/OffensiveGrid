@@ -24,7 +24,7 @@ services:
       sh -c "python manage.py migrate &&
              python manage.py loaddata initial_data.json || true &&
              python manage.py collectstatic --noinput &&
-             gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+             daphne -b 0.0.0.0 -p 8000 config.asgi:application"
     environment:
       - DB_HOST=db
       - DB_NAME=${DB_NAME:-cybergrid}
@@ -34,8 +34,18 @@ services:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:8080}
+      - CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS:-http://localhost:8080}
+      - SECURE_SSL_REDIRECT=${SECURE_SSL_REDIRECT:-False}
       - OFFENSIVEGRID_FOUNDER_DEV=${OFFENSIVEGRID_FOUNDER_DEV:-FALSE}
       - OFFENSIVEGRID_LICENSE_KEY=${OFFENSIVEGRID_LICENSE_KEY:-}
+      - EMAIL_HOST=${EMAIL_HOST:-smtp.gmail.com}
+      - EMAIL_PORT=${EMAIL_PORT:-587}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER:-}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD:-}
+      - DEFAULT_FROM_EMAIL=${DEFAULT_FROM_EMAIL:-}
+      - SUPABASE_URL=${SUPABASE_URL:-}
+      - SUPABASE_KEY=${SUPABASE_KEY:-}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
