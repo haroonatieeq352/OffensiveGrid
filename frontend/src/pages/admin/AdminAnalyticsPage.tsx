@@ -524,14 +524,10 @@ export const AdminAnalyticsPage: React.FC = () => {
                         labelStyle={{ color: '#94A3B8', fontWeight: 600 }}
                         formatter={(value: any, name: any) => [
                           <span style={{ color: name === 'solves' ? '#34D399' : '#F87171', fontWeight: 'bold' }}>
-                            {value} {name === 'solves' ? 'Scenarios Solved ✅' : 'Failed Attempts ❌'}
+                            {value} {name === 'solves' ? 'Solved' : 'Failed'}
                           </span>,
                           name === 'solves' ? 'Solves' : 'Failures',
                         ]}
-                      />
-                      <Legend
-                        wrapperStyle={{ fontSize: '11px', paddingTop: '8px' }}
-                        formatter={(value) => (value === 'solves' ? 'Scenarios Solved (✅)' : 'Failed Attempts (❌)')}
                       />
                       <Bar dataKey="solves" fill="#10B981" radius={[4, 4, 0, 0]} name="solves" barSize={16} />
                       <Bar dataKey="fails" fill="#F43F5E" radius={[4, 4, 0, 0]} name="fails" barSize={16} />
