@@ -30,6 +30,8 @@ import { AdminAnalyticsPage } from './pages/admin/AdminAnalyticsPage';
 import { AuditLogsPage } from './pages/admin/AuditLogsPage';
 import { TaxonomyManagerPage } from './pages/admin/TaxonomyManagerPage';
 
+import { LicenseLockModal } from './components/common/LicenseLockModal';
+
 // Protected Route Guards
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -51,7 +53,9 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 export const App: React.FC = () => {
   return (
-    <Routes>
+    <>
+      <LicenseLockModal />
+      <Routes>
       {/* Public Landing */}
       <Route path="/" element={<LandingPage />} />
 
@@ -99,6 +103,7 @@ export const App: React.FC = () => {
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </>
   );
 };
 

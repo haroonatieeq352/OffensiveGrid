@@ -226,6 +226,43 @@ OffensiveGrid is built with a **Zero-Trust** security posture:
 
 ---
 
+## 🔐 Hardware Authorization & Machine Activation Gate
+
+To protect proprietary intellectual property while keeping this repository publicly discoverable for international recruiters, universities, and enterprise clients, **OffensiveGrid integrates a Zero-Trust Cryptographic Hardware Licensing Gate**.
+
+### 🛡️ How the Protection Works:
+1. **Deterministic Machine Fingerprint:** Upon launch, the backend derives a unique Hardware ID (HWID) based on physical machine characteristics (e.g. `OG-8492-F92A-K29B`).
+2. **Cryptographic Validation:** Without an official cryptographic license signed by Haroon Atieeq matching that specific HWID, all backend API requests and dev servers are **instantly locked**:
+   ```text
+   ================================================================================
+   ⛔ [OffensiveGrid Security Gate]: Unauthorized Machine! This instance is locked.
+   You require an official authorization key from Haroon Atieeq to run OffensiveGrid.
+   Hardware ID: OG-8492-F92A-K29B
+   Contact: haroonatieeq6@gmail.com to request access.
+   ================================================================================
+   ```
+3. **Frontend Lock Screen:** Unlicensed instances automatically render the glassmorphism **OffensiveGrid Security Gate Modal**, allowing users to copy their Hardware ID with 1 click and enter their issued activation key.
+4. **Anti-Tampering & VAPT/Pentester Defense:**
+   - **HMAC-SHA256 Signatures:** License keys (`OGLIC.<payload>.<sig>`) are cryptographically sealed with a salted master key. Modifying the payload immediately invalidates the signature (`TAMPERED_KEY`).
+   - **Hardware Binding:** The key incorporates the deterministic machine hash; copying an authorized key to a different machine triggers `HARDWARE_MISMATCH`.
+   - **Time-Bound Revocation:** Expiration timestamps are embedded within the signed envelope; clock manipulation cannot extend expired licenses.
+   - **Zero Secrets in Repository:** The generator script (`generate_license.py`) is excluded from Git tracking and exists exclusively on the author's development machine.
+
+### 🔑 How to Request an Evaluation License Key:
+If you are an **international client, corporate security team, university instructor, or Final Year Project (FYP) student** evaluating OffensiveGrid:
+1. Clone the repository and run the project to obtain your unique **Hardware ID**.
+2. Email [haroonatieeq6@gmail.com](mailto:haroonatieeq6@gmail.com) with the subject `OffensiveGrid Evaluation License Request` containing:
+   - Your Name & Organization / University
+   - Intended Use (e.g. Academic Research, Corporate Evaluation, Final Year Project)
+   - Your Machine Hardware ID (`OG-XXXX-XXXX-XXXX`)
+3. Upon approval, you will receive your signed `OGLIC-...` key. Paste it into your `backend/.env`:
+   ```bash
+   OFFENSIVEGRID_LICENSE_KEY=OGLIC-your-activation-key-here
+   ```
+   *Or paste it directly into the web UI activation prompt to unlock all scenarios instantly!*
+
+---
+
 ## 📄 License & Authorization Policy
 
 ```text
@@ -244,7 +281,7 @@ Copyright (c) 2026 Haroon Atieeq. All Rights Reserved.
 #### 📬 Requesting Access & Collaboration:
 To request permission to clone, evaluate, or collaborate on OffensiveGrid:
 - **Founder & Lead Developer:** Haroon Atieeq
-- **Email:** `haroonatieeq6@gmail.com`
+- **Email:** [haroonatieeq6@gmail.com](mailto:haroonatieeq6@gmail.com)
 - **Official Domain:** [https://cszone.pk](https://cszone.pk)
 - **GitHub Profile:** [@haroonatieeq352](https://github.com/haroonatieeq352)
 

@@ -40,6 +40,7 @@ urlpatterns = [
     path('api/v1/files/', include('apps.files.urls', namespace='files')),
     path('api/v1/audit/', include('apps.audit.urls', namespace='audit')),
     path('api/v1/payments/', include('apps.payments.urls', namespace='payments')),
+    path('api/v1/license/', include('apps.core.urls', namespace='license')),
 ]
 
 # Serve media files in development and local environments

@@ -21,6 +21,7 @@ backend/get_*.py
 backend/cleanup_*.py
 backend/recalc.py
 backend/test_serializer.py
+backend/generate_license.py
 !backend/tests/
 !backend/tests/*.py
 backend/tests/__pycache__/

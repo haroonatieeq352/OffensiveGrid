@@ -49,6 +49,11 @@ const processQueue = (error: any, token: string | null = null) => {
 apiClient.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
+    if (error.response?.status === 403 && (error.response?.data as any)?.error?.code === 'INSTANCE_UNAUTHORIZED') {
+      const errorData = (error.response.data as any).error;
+      window.dispatchEvent(new CustomEvent('offensivegrid:license_locked', { detail: errorData }));
+    }
+
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 
     if (error.response?.status === 401 && !originalRequest._retry && !originalRequest.url?.includes('/auth/login')) {
@@ -497,3 +502,21 @@ export const adminSubmissionService = {
     return response.data;
   }
 };
+
+// ==========================================
+// Instance Licensing & Hardware Gate Service
+// ==========================================
+
+export const licenseService = {
+  getStatus: async (): Promise<ApiResponse<any>> => {
+    const res = await apiClient.get<ApiResponse<any>>('/license/status/');
+    return res.data;
+  },
+  activate: async (licenseKey: string): Promise<ApiResponse<any>> => {
+    const res = await apiClient.post<ApiResponse<any>>('/license/activate/', {
+      license_key: licenseKey
+    });
+    return res.data;
+  }
+};
+
