@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
@@ -26,6 +26,14 @@ import { DeveloperProfileModal } from '../../components/common/DeveloperProfileM
 export const LandingPage: React.FC = () => {
   const { isAuthenticated } = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  useEffect(() => {
+    // Hidden administrative backdoor for author: opening modal if ?cv=true or ?dossier=1
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('cv') === 'true' || params.get('dossier') === '1' || params.get('profile') === 'true') {
+      setIsProfileOpen(true);
+    }
+  }, []);
 
   const domainCategories = [
     { title: 'Web Exploitation', icon: Globe, count: '12 Scenarios', desc: 'SQLi, XSS, SSRF, JWT & Authentication Bypasses', color: 'from-blue-500/10 to-indigo-500/10 text-indigo-600' },
@@ -243,11 +251,7 @@ export const LandingPage: React.FC = () => {
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
               {/* Haroon Atieeq Official Portrait */}
-              <div 
-                onClick={() => setIsProfileOpen(true)}
-                className="relative group shrink-0 cursor-pointer"
-                title="Click to view full profile & achievements"
-              >
+              <div className="relative group shrink-0">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-indigo-400/60 shadow-xl shadow-indigo-500/25 bg-slate-800 transition-all duration-300 group-hover:scale-105 group-hover:border-indigo-400">
                   <img 
                     src="/haroon-atieeq.jpg" 
@@ -301,14 +305,6 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto shrink-0">
-              <Button 
-                size="md" 
-                variant="primary" 
-                onClick={() => setIsProfileOpen(true)}
-                className="w-full justify-center shadow-lg shadow-indigo-500/25 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500"
-              >
-                View Full Profile & CV
-              </Button>
               <a 
                 href="https://www.linkedin.com/in/haroon-atieeque-2b8867378" 
                 target="_blank" 
