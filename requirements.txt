@@ -1,2 +1,0 @@
-# OffensiveGrid — Master Python Requirements
--r backend/requirements.txt

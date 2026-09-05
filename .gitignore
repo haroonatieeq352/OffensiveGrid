@@ -69,3 +69,23 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Internal Project Planning, Reports & AI Rules (Local Machine Only)
+.agents/
+AGENTS.md
+PROJECT_MASTER_PLAN.md
+PROJECT_PROGRESS.md
+ERROR_FIX_LOG.md
+SEO_AND_AI_OPTIMIZATION_CHECKLIST.md
+DevOps_Deployment_Guide.md
+VAPT_Report.md
+detailed_backend_security_report.md
+detailed_inspection_report.md
+
+# Local Windows Launch Scripts (Local Machine Only)
+start_*.bat
+start_*.ps1
+
+# Root requirements duplicate (Backend has backend/requirements.txt)
+/requirements.txt
+
