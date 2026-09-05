@@ -1,0 +1,402 @@
+[
+{
+  "model": "scenarios.difficulty",
+  "pk": "0d0c0a87-aa4c-474c-8f37-40be4ff07bba",
+  "fields": {
+    "created_at": "2026-09-01T11:14:13.928Z",
+    "updated_at": "2026-09-01T11:15:48.234Z",
+    "name": "Hard",
+    "level_value": 20,
+    "color_code": "red"
+  }
+},
+{
+  "model": "scenarios.difficulty",
+  "pk": "15a007b0-0b5f-4beb-b426-bb0e4801941b",
+  "fields": {
+    "created_at": "2026-08-30T06:56:01.088Z",
+    "updated_at": "2026-08-30T06:56:01.088Z",
+    "name": "Medium",
+    "level_value": 10,
+    "color_code": "amber"
+  }
+},
+{
+  "model": "scenarios.difficulty",
+  "pk": "7d90c527-5ce7-46f5-a455-135bfeafd4ca",
+  "fields": {
+    "created_at": "2026-09-01T11:15:29.022Z",
+    "updated_at": "2026-09-01T11:15:29.022Z",
+    "name": "Expert",
+    "level_value": 30,
+    "color_code": "purple"
+  }
+},
+{
+  "model": "scenarios.difficulty",
+  "pk": "9ed12209-2cd4-4a18-87f5-2836c2deee30",
+  "fields": {
+    "created_at": "2026-09-01T11:13:29.725Z",
+    "updated_at": "2026-09-01T11:13:29.725Z",
+    "name": "Normal",
+    "level_value": 5,
+    "color_code": "emerald"
+  }
+},
+{
+  "model": "scenarios.category",
+  "pk": "4e6c4f94-1922-461f-bcf6-c6fc86e07853",
+  "fields": {
+    "created_at": "2026-09-04T17:41:24.408Z",
+    "updated_at": "2026-09-04T17:41:24.408Z",
+    "name": "OSINT & Recon",
+    "slug": "osint-recon",
+    "description": "",
+    "icon": "Search"
+  }
+},
+{
+  "model": "scenarios.category",
+  "pk": "6d6d2f35-22a6-4e30-bcf6-d7973ab80b7e",
+  "fields": {
+    "created_at": "2026-09-05T10:56:02.070Z",
+    "updated_at": "2026-09-05T10:56:30.640Z",
+    "name": "Cryptography",
+    "slug": "cryptography",
+    "description": "",
+    "icon": "Key"
+  }
+},
+{
+  "model": "scenarios.category",
+  "pk": "73f13382-b103-440f-89ba-5ac684181e53",
+  "fields": {
+    "created_at": "2026-09-05T12:56:14.455Z",
+    "updated_at": "2026-09-05T12:56:14.455Z",
+    "name": "Broken Authentication",
+    "slug": "broken-authentication",
+    "description": "",
+    "icon": "Shield"
+  }
+},
+{
+  "model": "scenarios.category",
+  "pk": "ce879a9e-901c-4d58-8747-49d4a6f44371",
+  "fields": {
+    "created_at": "2026-09-05T11:40:10.400Z",
+    "updated_at": "2026-09-05T11:40:10.400Z",
+    "name": "Broken Access Control (IDOR)",
+    "slug": "broken-access-control-idor",
+    "description": "",
+    "icon": "Lock"
+  }
+},
+{
+  "model": "scenarios.category",
+  "pk": "ea4c704a-16a2-44f5-975f-c422fb03dd09",
+  "fields": {
+    "created_at": "2026-09-05T11:16:06.737Z",
+    "updated_at": "2026-09-05T11:39:35.390Z",
+    "name": "Broken Access Control",
+    "slug": "broken-access-control",
+    "description": "",
+    "icon": "Shield"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "2af80656-7e23-4bbb-9f2e-f5df1386be35",
+  "fields": {
+    "created_at": "2026-09-05T11:18:53.161Z",
+    "updated_at": "2026-09-05T11:18:53.161Z",
+    "title": "Web / Broken Access Control",
+    "slug": "web--broken-access-control",
+    "description": "Every website sometimes has an admin panel a secret page where the owner manages things. Normally this page is protected by a login.\nBut on this server, the developer moved the admin panel to a new hidden URL during a site migration and forgot to add a password. They also accidentally left the hidden URL inside the JavaScript file encoded in Base64, thinking nobody would notice.\nCan you find the secret URL and access the unprotected admin panel?",
+    "instructions": "🎯 Your Goal: \nFind the hidden admin panel URL from the browser console and access it without any login to capture the flag.\n💡 Hints:\nHint 1 (Find the Clue): Open the homepage (http://localhost:8080/) and open DevTools. Go to the Console tab. You will see a suspicious encoded string printed automatically. Type this in the console to read it, so findout /panel-………   url",
+    "category": "ea4c704a-16a2-44f5-975f-c422fb03dd09",
+    "difficulty": "15a007b0-0b5f-4beb-b426-bb0e4801941b",
+    "points": 120,
+    "target_url": "https://s04.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "3b3ddd84-d135-4485-a7ab-e408db23363d"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "5f16b7a0-120e-4a5e-b1b6-85dafa24b517",
+  "fields": {
+    "created_at": "2026-09-04T18:11:11.703Z",
+    "updated_at": "2026-09-04T18:53:12.626Z",
+    "title": "OSINT & Recon",
+    "slug": "osint-recon",
+    "description": "Perform web reconnaissance on a live server to identify developer oversights hidden inside HTML comments and extract the secret flag from HTTP response headers.",
+    "instructions": "💡Hints (use only if stuck):\nHint 1: Open the page source, Read every comment carefully. What is the developer worried about?\n\nHint 2: The word \"response headers\" is in the comment. What tool can you use to see HTTP response headers?",
+    "category": "4e6c4f94-1922-461f-bcf6-c6fc86e07853",
+    "difficulty": "9ed12209-2cd4-4a18-87f5-2836c2deee30",
+    "points": 50,
+    "target_url": "https://s01.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "95733450-b939-40a2-b913-f9a8879039a8",
+  "fields": {
+    "created_at": "2026-09-05T11:43:30.281Z",
+    "updated_at": "2026-09-05T11:43:30.281Z",
+    "title": "Broken Access Control (IDOR)",
+    "slug": "broken-access-control-idor",
+    "description": "There's a public invoice viewer. It takes an id parameter. Some invoices belong to outside customers. One doesn't. Find an invoice that wasn't meant to be publicly readable, and decode what's inside it.",
+    "instructions": "💡 Hints:\n•\tHint 1 — Enumerate: The invoice IDs aren't random — they're sequential-ish. Fetch the underlying data file directly rather than clicking through the UI one at a time.\n•\tHint 2 — Look at the notes field: One invoice's 1001-1012 internal notes field isn't plain text like the others.",
+    "category": "ce879a9e-901c-4d58-8747-49d4a6f44371",
+    "difficulty": "9ed12209-2cd4-4a18-87f5-2836c2deee30",
+    "points": 60,
+    "target_url": "https://s05.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "a58d7952-25b4-4b47-a57e-6aad1210d729",
+  "fields": {
+    "created_at": "2026-09-05T10:59:35.117Z",
+    "updated_at": "2026-09-05T11:13:42.507Z",
+    "title": "Cryptography (XOR Cipher)",
+    "slug": "cryptography-xor-cipher",
+    "description": "The application homepage loads an external JavaScript file (main.js). Developers often leave unused variables, debug endpoints, or test artifacts in their scripts. In this case, an unused variable contains an encoded flag. However, it is protected with a two-step cryptographic obfuscation: XOR encryption + Base64 encoding.\n\nTo capture the flag, you must inspect the script, discover the secret variable, locate the decryption key file, and reverse the encryption process.",
+    "instructions": "🎯 Your Goal:\n1.\tOpen Browser DevTools and retrieve the hidden encoded variable from the console / script.\n2.\tLocate the configuration file (/js-config.json) mentioned in the code comments to extract the XOR decryption key.\n3.\tUnderstand the decryption sequence (From Base64 ➔ XOR with Key).\n4.\tUse CyberChef or Browser Console to decrypt the payload and retrieve the flag.",
+    "category": "6d6d2f35-22a6-4e30-bcf6-d7973ab80b7e",
+    "difficulty": "15a007b0-0b5f-4beb-b426-bb0e4801941b",
+    "points": 100,
+    "target_url": "https://s03.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "e29fca11-8d5e-4974-a028-e36f3f94e8ee",
+  "fields": {
+    "created_at": "2026-09-05T13:25:42.344Z",
+    "updated_at": "2026-09-05T13:25:42.344Z",
+    "title": "The Forgotten Backup",
+    "slug": "the-forgotten-backup",
+    "description": "A forgotten /backup/ directory was left exposed on the production server without any links or robots.txt disclosure. Inside, an unindexed configuration file leaks service account metadata. Your task is to locate the archive, extract the leaked credentials list, brute-force the authentication portal using Burp Suite Intruder, and capture the administration flag.",
+    "instructions": "🎯 Your Goal:\nDiscover the unlinked /backup/ directory.\nRead /backup/users.json to extract the username and password wordlist.\nUse Burp Suite Intruder to brute-force /backup/login.html.\nLog in with the valid credentials and decode the Base64 token to reveal the flag.\n\n💡 Brief Hints (To the Point):\n🔹 Hint 1 — Directory Discovery: Check common administrative backup paths directly in your browser or with directory fuzzing: https://s07.offensivegrid.com/backup/.\n🔹 Hint 2 — Data Extraction: Navigate to /backup/users.json. This file leaks the service username and a link to the candidate password wordlist. Copy the wordlist into a text file.\n🔹 Hint 3 — Burp Intruder Attack: Open /backup/login.html through Burp Suite. Submit a test login, send the POST request to Intruder, set the payload position on the password field, load your wordlist, and start the attack. Look for the request that returns a different HTTP status code or response length.\n🔹 Hint 4 — Token Decode: Log in with the discovered valid password. The server returns a Base64-encoded victory token. Send this token to Burp Decoder (or use atob()) to reveal the final flag!",
+    "category": "73f13382-b103-440f-89ba-5ac684181e53",
+    "difficulty": "0d0c0a87-aa4c-474c-8f37-40be4ff07bba",
+    "points": 160,
+    "target_url": "https://s07.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "edbb37ec-835c-4f6f-94df-5d03037ad1d1",
+  "fields": {
+    "created_at": "2026-09-04T18:39:19.820Z",
+    "updated_at": "2026-09-04T18:51:51.802Z",
+    "title": "Robots Talk Too Much",
+    "slug": "robots-talk-too-much",
+    "description": "Developers use a file called robots.txt to tell search engines which folders to ignore. But hackers use this file to find hidden folders.\nOn this server, the developer realized their mistake and moved the secret files into another hidden folder. They also encoded the final flag. Can you find the hidden folder and decode the flag?",
+    "instructions": "💡 Hints:\n•\tHint 1 (Brute-Force): Check the robots.txt file. It will show a directory. Visit that directory and view its page source. You'll find a comment telling you to use a brute-force tool (like gobuster or ffuf) with the provided wordlist.txt to find the hidden sub-folder.\n\n•\tHint 2 (Decoding): If you find a folder that gives a 403 Forbidden error, don't stop! View the source code of that 403 page to find the hidden log file name. Open that log file, look for a text ending with = (Base64), and decode it.",
+    "category": "4e6c4f94-1922-461f-bcf6-c6fc86e07853",
+    "difficulty": "9ed12209-2cd4-4a18-87f5-2836c2deee30",
+    "points": 50,
+    "target_url": "https://s02.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "scenarios.scenario",
+  "pk": "ff264757-e420-4a03-a9c0-51748443a7af",
+  "fields": {
+    "created_at": "2026-09-05T12:58:59.409Z",
+    "updated_at": "2026-09-05T12:58:59.409Z",
+    "title": "Identity Crisis",
+    "slug": "identity-crisis",
+    "description": "A \"restricted area\" page checks your session before granting access. The page tells you: \"verify how your session identifies itself.\" The check runs entirely in your browser but the clue to bypass it isn't in the page source. You'll need to look deeper at what the server sends you before the HTML even loads.",
+    "instructions": "🎯 Your Goal:\nFind the hidden session hint, set the correct cookie, get the page to recognize you as authorized, then decode the flag it reveals.\n\n💡 Hints:\n•\tHint 1 — The clue isn't in the page source: View-source on /secure/ won't give you the cookie value directly. Instead, inspect what the server sends back before the HTML — check the HTTP response headers on this specific page.\n•\tHint 2 — Decode the header value X-Auth-Hint, The response header you find contains a Base64-encoded string. Decode it to get the exact cookie name=value pair you need to set.\n•\tHint 3 — Set the cookie, reload the page, Once you know the cookie name and value, add it via DevTools → Application → Cookies (or via Console). Then reload — the JS access check will pass and reveal a payload.\n•\tHint 4 — One more decode: The revealed payload is Base64-encoded. Decode it to get the flag.",
+    "category": "73f13382-b103-440f-89ba-5ac684181e53",
+    "difficulty": "15a007b0-0b5f-4beb-b426-bb0e4801941b",
+    "points": 150,
+    "target_url": "https://s06.offensivegrid.com/",
+    "max_attempts": 3,
+    "time_limit_minutes": 0,
+    "is_paid": false,
+    "status": "PUBLISHED",
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "2f5d5e5a-b5ed-41a4-8e4d-8e4e61f18a3f",
+  "fields": {
+    "created_at": "2026-09-04T18:51:51.824Z",
+    "updated_at": "2026-09-04T18:51:51.825Z",
+    "scenario": "edbb37ec-835c-4f6f-94df-5d03037ad1d1",
+    "flag_value": "CTF{r0b0ts_d1scl0s3_p4ths}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "4cf7019c-7b34-4ac8-9c49-d6669d1fde99",
+  "fields": {
+    "created_at": "2026-09-05T11:18:53.172Z",
+    "updated_at": "2026-09-05T11:18:53.172Z",
+    "scenario": "2af80656-7e23-4bbb-9f2e-f5df1386be35",
+    "flag_value": "CTF{4dm1n_p4n3l_3xp0s3d}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "4e957a13-b1ac-47ed-8148-5d08344da79f",
+  "fields": {
+    "created_at": "2026-09-05T11:13:42.533Z",
+    "updated_at": "2026-09-05T11:13:42.533Z",
+    "scenario": "a58d7952-25b4-4b47-a57e-6aad1210d729",
+    "flag_value": "CTF{unus3d_v4r14bl3_l34k}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "971feeec-953d-4a34-a28e-8f393fb1c017",
+  "fields": {
+    "created_at": "2026-09-05T12:58:59.420Z",
+    "updated_at": "2026-09-05T12:58:59.420Z",
+    "scenario": "ff264757-e420-4a03-a9c0-51748443a7af",
+    "flag_value": "CTF{h34d3r_c00k13_byp4ss}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "9ab69d5c-c321-45e6-903c-d1e183b1bd06",
+  "fields": {
+    "created_at": "2026-09-05T11:43:30.293Z",
+    "updated_at": "2026-09-05T11:43:30.293Z",
+    "scenario": "95733450-b939-40a2-b913-f9a8879039a8",
+    "flag_value": "CTF{1d0r_1nv01c3_l34k}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "c3fe6dff-b97f-4074-81e3-a249519eea0a",
+  "fields": {
+    "created_at": "2026-09-04T18:53:12.646Z",
+    "updated_at": "2026-09-04T18:53:12.646Z",
+    "scenario": "5f16b7a0-120e-4a5e-b1b6-85dafa24b517",
+    "flag_value": "CTF{h34d3r_hunt3r_pr0}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "scenarios.flag",
+  "pk": "db4b478d-9301-48fe-9866-5eb6d3cfa28c",
+  "fields": {
+    "created_at": "2026-09-05T13:25:42.356Z",
+    "updated_at": "2026-09-05T13:25:42.356Z",
+    "scenario": "e29fca11-8d5e-4974-a028-e36f3f94e8ee",
+    "flag_value": "CTF{h4sh_cr4ck3d_4cc3ss}",
+    "is_case_sensitive": true,
+    "is_regex": false
+  }
+},
+{
+  "model": "competitions.competition",
+  "pk": "c93a422f-cd21-4cf7-90a1-3a86e5f76608",
+  "fields": {
+    "created_at": "2026-08-26T04:48:32.256Z",
+    "updated_at": "2026-08-26T04:48:32.256Z",
+    "title": "CyberGrid National Championship 2026",
+    "slug": "cybergrid-national-championship-2026",
+    "description": "Premier cybersecurity tournament featuring Web, Forensics, and Crypto attack-defense scenarios.",
+    "start_time": "2026-08-26T03:48:32.255Z",
+    "end_time": "2026-08-26T09:48:32.255Z",
+    "status": "ACTIVE",
+    "is_public": true,
+    "created_by": "70632a38-f8ec-4354-a34c-55e06088e882"
+  }
+},
+{
+  "model": "competitions.tournamentconfig",
+  "pk": "00000000-0000-0000-0000-000000000001",
+  "fields": {
+    "created_at": "2026-08-29T10:09:38.574Z",
+    "updated_at": "2026-09-01T08:45:07.608Z",
+    "duration_minutes": 190,
+    "is_active": true
+  }
+},
+{
+  "model": "competitions.studenttournamentsession",
+  "pk": "666e044b-bdf8-4c34-831e-ad757d2ecee9",
+  "fields": {
+    "created_at": "2026-09-01T08:45:47.632Z",
+    "updated_at": "2026-09-01T08:45:47.633Z",
+    "user": "30036176-cdac-46bc-a3af-7a203c860ad0",
+    "start_time": "2026-09-01T08:45:47.633Z",
+    "duration_minutes": 190,
+    "total_paused_seconds": 0,
+    "last_paused_at": null
+  }
+},
+{
+  "model": "competitions.studenttournamentsession",
+  "pk": "cb7a1534-92c5-4612-896d-65bbbfa8c1b9",
+  "fields": {
+    "created_at": "2026-09-04T18:11:44.560Z",
+    "updated_at": "2026-09-04T18:11:44.560Z",
+    "user": "3b3ddd84-d135-4485-a7ab-e408db23363d",
+    "start_time": "2026-09-04T18:11:44.560Z",
+    "duration_minutes": 190,
+    "total_paused_seconds": 0,
+    "last_paused_at": null
+  }
+},
+{
+  "model": "competitions.studenttournamentsession",
+  "pk": "fd74a670-e52c-4665-9b08-fb520401fb96",
+  "fields": {
+    "created_at": "2026-09-05T12:39:51.045Z",
+    "updated_at": "2026-09-05T12:39:51.045Z",
+    "user": "70632a38-f8ec-4354-a34c-55e06088e882",
+    "start_time": "2026-09-05T12:39:51.045Z",
+    "duration_minutes": 190,
+    "total_paused_seconds": 0,
+    "last_paused_at": null
+  }
+}
+]
