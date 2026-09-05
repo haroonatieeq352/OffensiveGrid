@@ -1,0 +1,69 @@
+# ==========================================
+# OffensiveGrid — Git Ignore Configuration
+# ==========================================
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+db.sqlite3
+backend/db.sqlite3
+media/
+static/
+backend/media/
+backend/static/
+.pytest_cache/
+# Temporary scripts
+backend/check_*.py
+backend/fix_*.py
+backend/get_*.py
+backend/cleanup_*.py
+backend/recalc.py
+backend/test_serializer.py
+!backend/tests/
+!backend/tests/**
+
+# Environment Variables & Secrets (STRICT ZERO-LEAK)
+.env
+*.env
+*.env.*
+!*.env.example
+!*.env.production.example
+backend/.env
+frontend/.env
+
+# Security Keys & Certificates
+*.pem
+*.key
+*.crt
+*.cert
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Frontend / Node
+node_modules/
+dist/
+build/
+.npm/
+frontend/test-out.css
+
+# IDE / OS Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
