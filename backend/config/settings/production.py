@@ -9,9 +9,13 @@ from .base import *
 DEBUG = False
 
 # Strict host headers in production
-allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,.vercel.app')
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_raw.split(',') if host.strip()]
-# Ensure localhost and healthcheck hosts are allowed if running behind internal proxies
+# Ensure localhost, vercel domains and healthcheck hosts are allowed
+if '.vercel.app' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('.vercel.app')
+if '*' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('*')
 if '127.0.0.1' not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append('127.0.0.1')
 if 'localhost' not in ALLOWED_HOSTS:
@@ -32,7 +36,7 @@ if database_url:
             'PASSWORD': unquote(url.password or ''),
             'HOST': url.hostname or '',
             'PORT': str(url.port or '5432'),
-            'CONN_MAX_AGE': 600,
+            'CONN_MAX_AGE': 0,
             'OPTIONS': {
                 'sslmode': 'require',
             }
