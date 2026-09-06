@@ -25,6 +25,9 @@ def health_check(request):
 
 
 urlpatterns = [
+    # Root Health / Landing
+    path('', health_check, name='root_health'),
+
     # Administration Portal
     path('admin/', admin.site.urls),
 
