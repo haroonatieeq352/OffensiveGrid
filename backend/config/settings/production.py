@@ -98,3 +98,6 @@ CSRF_TRUSTED_ORIGINS = [
     for origin in csrf_origins_raw.split(',')
     if origin.strip()
 ]
+if 'https://*.vercel.app' not in CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS.append('https://*.vercel.app')
+

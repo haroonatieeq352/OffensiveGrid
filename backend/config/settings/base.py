@@ -10,6 +10,10 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+import sys
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-cs-zone-cybergrid-core-dev-key-2026')
 
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
