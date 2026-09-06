@@ -12,10 +12,16 @@ export const useTournamentSync = (onUpdate: () => void) => {
     let isMounted = true;
     
     const connect = () => {
-      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const host = window.location.host;
-      // Connect to the global leaderboard room which broadcasts tournament updates
-      const wsUrl = `${protocol}//${host}/ws/leaderboard/`;
+      const wsBase = import.meta.env.VITE_WS_BASE_URL;
+      let wsUrl: string;
+      if (wsBase) {
+        const cleanBase = wsBase.replace(/\/+$/, '');
+        wsUrl = `${cleanBase}/leaderboard/`;
+      } else {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const host = window.location.host;
+        wsUrl = `${protocol}//${host}/ws/leaderboard/`;
+      }
 
       try {
         const ws = new WebSocket(wsUrl);

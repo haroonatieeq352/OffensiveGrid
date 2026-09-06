@@ -14,10 +14,18 @@ export const useLeaderboardSocket = (competitionSlug?: string) => {
   const socketRef = useRef<WebSocket | null>(null);
 
   const connect = useCallback(() => {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const host = window.location.host;
-    const path = competitionSlug ? `/ws/leaderboard/${competitionSlug}/` : '/ws/leaderboard/';
-    const wsUrl = `${protocol}//${host}${path}`;
+    const wsBase = import.meta.env.VITE_WS_BASE_URL;
+    let wsUrl: string;
+    if (wsBase) {
+      const cleanBase = wsBase.replace(/\/+$/, '');
+      const path = competitionSlug ? `/leaderboard/${competitionSlug}/` : '/leaderboard/';
+      wsUrl = `${cleanBase}${path}`;
+    } else {
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const host = window.location.host;
+      const path = competitionSlug ? `/ws/leaderboard/${competitionSlug}/` : '/ws/leaderboard/';
+      wsUrl = `${protocol}//${host}${path}`;
+    }
 
     try {
       const ws = new WebSocket(wsUrl);

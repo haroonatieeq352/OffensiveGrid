@@ -3,7 +3,7 @@ Production settings for OffensiveGrid.
 Hardened for Google Cloud (Cloud Run / GCE) & NGINX Reverse Proxy Deployments.
 """
 import os
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 from .base import *
 
 DEBUG = False
@@ -28,11 +28,14 @@ if database_url:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': url.path[1:],
-            'USER': url.username or 'postgres',
-            'PASSWORD': url.password or '',
+            'USER': unquote(url.username or 'postgres'),
+            'PASSWORD': unquote(url.password or ''),
             'HOST': url.hostname or '',
             'PORT': str(url.port or '5432'),
             'CONN_MAX_AGE': 600,
+            'OPTIONS': {
+                'sslmode': 'require',
+            }
         }
     }
 elif db_host:

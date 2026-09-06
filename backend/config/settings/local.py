@@ -25,7 +25,24 @@ db_host = os.getenv('DB_HOST', '').strip()
 db_password = os.getenv('DB_PASSWORD', '').strip()
 database_url = os.getenv('DATABASE_URL', '').strip()
 
-if db_host and db_password:
+if database_url:
+    from urllib.parse import urlparse, unquote
+    url = urlparse(database_url)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': url.path[1:],
+            'USER': unquote(url.username or 'postgres'),
+            'PASSWORD': unquote(url.password or ''),
+            'HOST': url.hostname or '',
+            'PORT': str(url.port or '5432'),
+            'CONN_MAX_AGE': 60,
+            'OPTIONS': {
+                'sslmode': 'require',
+            }
+        }
+    }
+elif db_host and db_password:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
